@@ -1,0 +1,12 @@
+{
+  "private": true,
+  "name": "@redundans/weekly-popular",
+  "version": "0.1.0",
+  "scripts": {
+    "build": "flarum-webpack-config build",
+    "watch": "flarum-webpack-config watch"
+  },
+  "devDependencies": {
+    "flarum-webpack-config": "^2.0.0"
+  }
+}
