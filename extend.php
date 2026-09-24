@@ -1,14 +1,12 @@
 <?php
 
 use Flarum\Api\Resource;
-use Flarum\Api\Sort\SortColumn;
 use Flarum\Extend;
 use Redundans\WeeklyPopular\Api\Sort\WeeklyPopularSort;
 
 return [
     (new Extend\Frontend('admin'))
-        ->js(__DIR__ . '/js/dist/admin.js')
-        ->css(__DIR__ . '/js/dist/admin.css'),
+        ->js(__DIR__ . '/js/dist/admin.js'),
 
     new Extend\Locales(__DIR__ . '/locale'),
 
