@@ -1,8 +1,9 @@
 import app from 'flarum/admin/app';
 
 app.initializers.add('redundans-weekly-popular-admin', () => {
-  app.extensionData
-    .for('redundans-weekly-popular')
+  const extensionData = app.extensionData.for('redundans-weekly-popular');
+
+  extensionData
     .registerSetting({
       setting: 'weekly_popular_enabled',
       label: app.translator.trans('redundans-weekly-popular.admin.enabled_label'),
