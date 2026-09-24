@@ -1,27 +1,8 @@
 # Weekly Popular
 
-A Flarum 2.0 extension that adds a discussion sort for content with the strongest comment activity over the last seven days, inspired by Reddit’s "popular" feed.
+A Flarum 2.0 extension that adds a server-side discussion sort for comments created during a configurable recent window.
 
-## Features
-
-- Adds a custom forum sort named "Popular (7d)"
-- Ranks discussions by recent activity in a configurable time window
-- Allows the admin to toggle the feature on or off
-- Lets the admin set the window in days
-- Lets the admin change the visible sort label
-
-## Installation
-
-```bash
-composer require redundans/weekly-popular
-php flarum cache:clear
-```
-
-Then enable the extension in the Flarum admin panel.
-
-## Build JavaScript assets
-
-The repository does not commit generated JavaScript assets. Build them before installing the extension from a checkout:
+## Build
 
 ```bash
 cd js
@@ -29,8 +10,12 @@ npm install
 npm run build
 ```
 
-See [`js/README.md`](js/README.md) for troubleshooting.
+## Implementation
 
-## How it works
+The `weekly-popular` API sort is implemented in PHP. It counts recent comment posts in a correlated SQL subquery and applies the ordering before pagination. This avoids the previous client-side implementation, which could only reorder the discussions already present on the current page.
 
-The extension exposes a custom discussion sort option in the forum and reorders the loaded discussions based on comment count and recency within the configured timeframe.
+After changing the PHP code or settings, clear Flarum's cache:
+
+```bash
+php flarum cache:clear
+```

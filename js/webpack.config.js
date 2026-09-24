@@ -1,3 +1,9 @@
 const config = require('flarum-webpack-config');
 
-module.exports = config({});
+const webpackConfig = config({});
+
+webpackConfig.entry = {
+  admin: './admin.js',
+};
+
+module.exports = webpackConfig;
