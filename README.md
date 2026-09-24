@@ -1,15 +1,14 @@
 # Weekly Popular
 
-A Flarum 2.0 extension that adds a discussion sort for posts with the strongest activity in the last 7 days, inspired by Reddit’s front page "popular" feed.
+A Flarum 2.0 extension that adds a discussion sort for content with the strongest comment activity over the last seven days, inspired by Reddit’s "popular" feed.
 
 ## Features
 
-- Adds a forum sort option named "Popular (7d)"
-- Weights discussions by recent comments within the selected timeframe
-- Admin setting for enabling/disabling the sort
-- Admin setting for the time window in days
-- Admin setting for customizing the visible sort label
-- Designed to work with Flarum 2.0
+- Adds a custom forum sort named "Popular (7d)"
+- Ranks discussions by recent activity in a configurable time window
+- Allows the admin to toggle the feature on or off
+- Lets the admin set the window in days
+- Lets the admin change the visible sort label
 
 ## Installation
 
@@ -18,20 +17,18 @@ composer require redundans/weekly-popular
 php flarum cache:clear
 ```
 
-Then enable the extension from the Flarum admin panel.
+Then enable the extension in the Flarum admin panel.
 
-## Configuration
+## How it works
 
-Available settings:
+The extension exposes a custom discussion sort option in the forum and reorders the loaded discussions client-side based on:
 
-- `weekly_popular_enabled` — enable or disable the custom sort
-- `weekly_popular_timeframe` — number of days to measure activity over
-- `weekly_popular_label` — the label shown in the sort menu
+- comment count
+- how recently the discussion was active
+- the configured timeframe window
 
-## Intended behavior
-
-The sort ranks discussions by activity within the selected window, prioritizing those with more comments created recently. This creates a Reddit-like "active this week" feed without requiring a full custom front page implementation.
+This creates a simple Reddit-like "popular this week" experience without needing a full custom front page.
 
 ## Notes
 
-This extension is intentionally lightweight and works as a forum-level sorting helper. If you want a stronger, server-side ranking model for very large communities, the next step would be to add a dedicated database column and a generated ranking score for each discussion.
+This is a practical forum-side implementation for Flarum 2.0. It is fast and easy to configure, and it works well for community discussion lists. If you need a stricter backend ranking model or a server-side "popular in last N days" query for larger communities, a custom repository query or computed database field would be the next step.

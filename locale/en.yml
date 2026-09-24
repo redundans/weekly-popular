@@ -1,9 +1,8 @@
 weekly-popular:
   admin:
-    title: Weekly Popular
     enabled_label: Enable the weekly popular sort
     timeframe_label: Timeframe in days
-    timeframe_help: Discussions will be ranked by comments created within this many days.
+    timeframe_help: The discussion score is based on comments posted within this many days.
     label_label: Sort label
   forum:
     sort_popular: Popular (7d)

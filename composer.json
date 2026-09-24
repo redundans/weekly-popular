@@ -1,6 +1,6 @@
 {
   "name": "redundans/weekly-popular",
-  "description": "Flarum extension to sort discussions by activity within the last week.",
+  "description": "Flarum 2.0 extension that ranks discussions by recent activity in the last week.",
   "type": "flarum-extension",
   "require": {
     "php": "^8.1",
@@ -23,9 +23,6 @@
       "sort": {
         "name": "weekly-popular",
         "label": "Popular (7d)"
-      },
-      "requires": {
-        "flarum/tags": "*"
       }
     }
   }

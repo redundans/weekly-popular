@@ -13,7 +13,7 @@ return [
 
     (new Extend\Locales(__DIR__ . '/locale')),
 
-    new Extend\Settings()
+    (new Extend\Settings())
         ->serializeToForum('weekly_popular_enabled', 'weekly_popular_enabled')
         ->serializeToForum('weekly_popular_timeframe', 'weekly_popular_timeframe')
         ->serializeToForum('weekly_popular_label', 'weekly_popular_label'),
