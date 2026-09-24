@@ -8,13 +8,7 @@ use Illuminate\Database\Eloquent\Builder;
 use Tobyz\JsonApiServer\Context;
 use Tobyz\JsonApiServer\Schema\Sort;
 
-/**
- * Sort discussions by the number of comment posts created recently.
- *
- * Unlike SortColumn, this sort is computed from a SQL subquery rather than
- * treated as a physical discussions-table column.
- */
-class WeeklyPopularSort extends Sort
+final class WeeklyPopularSort extends Sort
 {
     public static function make(string $name): static
     {
