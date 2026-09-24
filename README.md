@@ -19,16 +19,18 @@ php flarum cache:clear
 
 Then enable the extension in the Flarum admin panel.
 
+## Build JavaScript assets
+
+The repository does not commit generated JavaScript assets. Build them before installing the extension from a checkout:
+
+```bash
+cd js
+npm install
+npm run build
+```
+
+See [`js/README.md`](js/README.md) for troubleshooting.
+
 ## How it works
 
-The extension exposes a custom discussion sort option in the forum and reorders the loaded discussions client-side based on:
-
-- comment count
-- how recently the discussion was active
-- the configured timeframe window
-
-This creates a simple Reddit-like "popular this week" experience without needing a full custom front page.
-
-## Notes
-
-This is a practical forum-side implementation for Flarum 2.0. It is fast and easy to configure, and it works well for community discussion lists. If you need a stricter backend ranking model or a server-side "popular in last N days" query for larger communities, a custom repository query or computed database field would be the next step.
+The extension exposes a custom discussion sort option in the forum and reorders the loaded discussions based on comment count and recency within the configured timeframe.
