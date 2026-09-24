@@ -20,6 +20,7 @@ return [
 
     (new Extend\ApiResource(Resource\DiscussionResource::class))
         ->sorts(fn () => [
-            WeeklyPopularSort::make()->descendingAlias('weekly-popular'),
+            WeeklyPopularSort::make('weeklyPopular')
+                ->descendingAlias('weekly-popular'),
         ]),
 ];

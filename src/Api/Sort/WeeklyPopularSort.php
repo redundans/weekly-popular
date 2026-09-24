@@ -17,9 +17,9 @@ use Tobyz\JsonApiServer\Context;
  */
 class WeeklyPopularSort extends SortColumn
 {
-    public static function make(): static
+    public static function make(string $name): static
     {
-        return new static('weeklyPopular');
+        return new static($name);
     }
 
     public function apply(object $query, string $direction, Context $context): void
