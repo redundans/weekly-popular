@@ -8,10 +8,8 @@ app.initializers.add('redundans-weekly-popular', () => {
     return;
   }
 
-  extend(DiscussionListState, 'sortMap', (sortMap: SortMap) => {
-    return {
-      ...sortMap,
-      weeklyPopular: '-weeklyPopular',
-    };
-  });
+  extend(DiscussionListState, 'sortMap', (sortMap: SortMap) => ({
+    ...sortMap,
+    weeklyPopular: '-weeklyPopular',
+  }));
 });
