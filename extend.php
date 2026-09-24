@@ -19,5 +19,7 @@ return [
         ->serializeToForum('weekly_popular_label', 'weekly_popular_label'),
 
     (new Extend\ApiResource(Resource\DiscussionResource::class))
-        ->sorts(fn () => [WeeklyPopularSort::make()]),
+        ->sorts(fn () => [
+            WeeklyPopularSort::make()->descendingAlias('weekly-popular'),
+        ]),
 ];
