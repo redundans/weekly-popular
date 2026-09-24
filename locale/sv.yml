@@ -5,9 +5,9 @@ weekly-popular:
     timeframe_help: The discussion score is based on comments posted within this many days.
     label_label: Sort label
   forum:
-    sort_popular: Popular
+    sort_popular: Populärt
 
 core:
   forum:
     index_sort:
-      weeklyPopular_button: Popular
+      weeklyPopular_button: Populärt
