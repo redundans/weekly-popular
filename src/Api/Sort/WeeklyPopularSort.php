@@ -3,19 +3,18 @@
 namespace Redundans\WeeklyPopular\Api\Sort;
 
 use Carbon\Carbon;
-use Flarum\Api\Sort\SortColumn;
 use Flarum\Post\Post;
 use Illuminate\Database\Eloquent\Builder;
 use Tobyz\JsonApiServer\Context;
+use Tobyz\JsonApiServer\Schema\Sort;
 
 /**
  * Sort discussions by the number of comment posts created recently.
  *
- * The score is calculated in SQL before pagination, so the API returns the
- * correct discussions on every page instead of sorting only the records
- * already loaded in the browser.
+ * Unlike SortColumn, this sort is computed from a SQL subquery rather than
+ * treated as a physical discussions-table column.
  */
-class WeeklyPopularSort extends SortColumn
+class WeeklyPopularSort extends Sort
 {
     public static function make(string $name): static
     {
