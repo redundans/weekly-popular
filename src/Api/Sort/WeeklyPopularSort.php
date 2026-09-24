@@ -2,34 +2,17 @@
 
 namespace Redundans\WeeklyPopular\Api\Sort;
 
-use Carbon\Carbon;
-use Flarum\Post\Post;
-use Illuminate\Database\Eloquent\Builder;
-use Tobyz\JsonApiServer\Context;
-use Tobyz\JsonApiServer\Schema\Sort;
+use Flarum\Api\Sort\SortColumn;
 
-final class WeeklyPopularSort extends Sort
+/**
+ * Publishes the weekly-popular alias in Flarum's sort map. The actual query
+ * rewrite is performed by WeeklyPopularSearchMutator because discussion index
+ * requests run through Flarum's search driver.
+ */
+final class WeeklyPopularSort extends SortColumn
 {
     public static function make(string $name): static
     {
         return new static($name);
-    }
-
-    public function apply(object $query, string $direction, Context $context): void
-    {
-        /** @var Builder $query */
-        $days = (int) resolve('flarum.settings')->get('weekly_popular_timeframe', 7);
-        $days = max(1, min($days, 30));
-
-        $recentComments = Post::query()
-            ->selectRaw('COUNT(*)')
-            ->whereColumn('posts.discussion_id', 'discussions.id')
-            ->where('posts.type', 'comment')
-            ->where('posts.created_at', '>=', Carbon::now()->subDays($days));
-
-        $query
-            ->selectSub($recentComments, 'weekly_popular_score')
-            ->orderBy('weekly_popular_score', $direction === 'asc' ? 'asc' : 'desc')
-            ->orderByDesc('discussions.last_posted_at');
     }
 }

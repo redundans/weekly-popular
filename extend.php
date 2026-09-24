@@ -2,7 +2,10 @@
 
 use Flarum\Api\Resource;
 use Flarum\Extend;
+use Flarum\Discussion\Search\DiscussionSearcher;
+use Flarum\Search\Database\DatabaseSearchDriver;
 use Redundans\WeeklyPopular\Api\Sort\WeeklyPopularSort;
+use Redundans\WeeklyPopular\Search\WeeklyPopularSearchMutator;
 
 return [
     (new Extend\Frontend('admin'))
@@ -20,4 +23,7 @@ return [
 
     (new Extend\ApiResource(Resource\DiscussionResource::class))
         ->sorts(fn () => [WeeklyPopularSort::make('weeklyPopular')]),
+
+    (new Extend\SearchDriver(DatabaseSearchDriver::class))
+        ->addMutator(DiscussionSearcher::class, WeeklyPopularSearchMutator::class),
 ];
