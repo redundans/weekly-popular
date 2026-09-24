@@ -4,6 +4,7 @@ const webpackConfig = config({});
 
 webpackConfig.entry = {
   admin: './admin.js',
+  forum: './forum.js',
 };
 
 module.exports = webpackConfig;

@@ -6,3 +6,8 @@ weekly-popular:
     label_label: Sort label
   forum:
     sort_popular: Popular (7d)
+  
+core:
+  forum:
+    index_sort:
+      weeklyPopular_button: Popular (7d)

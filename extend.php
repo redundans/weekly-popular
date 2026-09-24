@@ -11,6 +11,9 @@ return [
     (new Extend\Frontend('admin'))
         ->js(__DIR__ . '/js/dist/admin.js'),
 
+    (new Extend\Frontend('forum'))
+        ->js(__DIR__ . '/js/dist/forum.js'),
+
     new Extend\Locales(__DIR__ . '/locale'),
 
     (new Extend\Settings())
@@ -22,10 +25,7 @@ return [
         ->serializeToForum('weekly_popular_label', 'weekly_popular_label'),
 
     (new Extend\ApiResource(Resource\DiscussionResource::class))
-        ->sorts(fn () => [
-            WeeklyPopularSort::make('weeklyPopular')
-                ->descendingAlias('weekly-popular'),
-        ]),
+        ->sorts(fn () => [WeeklyPopularSort::make('weeklyPopular')]),
 
     (new Extend\SearchDriver(DatabaseSearchDriver::class))
         ->addMutator(DiscussionSearcher::class, WeeklyPopularSearchMutator::class),
