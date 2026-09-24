@@ -1,8 +1,8 @@
 <?php
 
 use Flarum\Api\Resource;
-use Flarum\Extend;
 use Flarum\Discussion\Search\DiscussionSearcher;
+use Flarum\Extend;
 use Flarum\Search\Database\DatabaseSearchDriver;
 use Redundans\WeeklyPopular\Api\Sort\WeeklyPopularSort;
 use Redundans\WeeklyPopular\Search\WeeklyPopularSearchMutator;
@@ -22,7 +22,10 @@ return [
         ->serializeToForum('weekly_popular_label', 'weekly_popular_label'),
 
     (new Extend\ApiResource(Resource\DiscussionResource::class))
-        ->sorts(fn () => [WeeklyPopularSort::make('weeklyPopular')]),
+        ->sorts(fn () => [
+            WeeklyPopularSort::make('weeklyPopular')
+                ->descendingAlias('weekly-popular'),
+        ]),
 
     (new Extend\SearchDriver(DatabaseSearchDriver::class))
         ->addMutator(DiscussionSearcher::class, WeeklyPopularSearchMutator::class),
