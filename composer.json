@@ -17,8 +17,8 @@
       "category": "discussion",
       "icon": {
         "name": "fas fa-fire",
-        "backgroundColor": "#f59e0b",
-        "color": "#fff7ed"
+        "color": "#222222",
+        "backgroundColor": "#fab005"
       },
       "sort": {
         "name": "weekly-popular",
